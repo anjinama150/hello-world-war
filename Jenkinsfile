@@ -3,16 +3,18 @@ pipeline {
     stages {
         stage('my Build') {
             steps {
-              sh 'mvn package'
+              sh ' sudo mvn package'
+              sh 'ls'
+              sh 'scp -R target/hello-world-war-1.0.0.war
             }
         }
       stage ( 'my deploy' ) {
         agent { label 'builder' }
         steps {
-             sh 'cd target'
+             sh 'sudo cd target'
              sh 'sudo cp -R hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps/'
              sh 'sudo /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
-             sh 'sleep 5'
+             sh 'sudo sleep 5'
              sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/startup.sh'
         }
       }
