@@ -5,7 +5,7 @@ pipeline {
             steps {
               sh ' sudo mvn package'
               sh 'ls'
-              sh 'scp -R target/hello-world-war-1.0.0.war
+              sh 'scp -R target/hello-world-war-1.0.0.war'
             }
         }
       stage ( 'my deploy' ) {
