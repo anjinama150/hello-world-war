@@ -6,10 +6,8 @@ pipeline {
             steps {
                  sh 'pwd'
                  sh 'sudo apt install maven -y'
-                 sh 'cd hello-world-war'
                  sh 'mvn package'
-                 sh 'cd target'
-                 sh 'sudo scp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jen@172.31.2.54:/opt/tomcat/webapps'
+                 sh 'sudo scp -r target/hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jen@172.31.2.54:/opt/tomcat/webapps'
             }
         }
 stage ('my deploy') {
