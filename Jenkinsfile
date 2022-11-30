@@ -1,8 +1,8 @@
 pipeline {
     agent none
     stages {
-        stage ('build') {
-            agent {label 'jenkins'}
+        stage ('my build') {
+            agent {label 'build'}
             steps {
                  sh 'pwd'
                  sh 'mvn package'
@@ -10,8 +10,8 @@ pipeline {
                  sh 'cp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jenkin@172.31.2.54:/opt/tomcat/webapps'
             }
         }
-stage ('deploy') {
-            agent {label 'jenkin'}
+stage ('my deploy') {
+            agent {label 'builder'}
                 steps{
                    sh 'sudo /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
                    sh  'sleep 5'
