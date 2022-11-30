@@ -6,6 +6,7 @@ pipeline {
             steps {
                  sh 'pwd'
                  sh 'mvn package'
+                 sh 'hello-world-war'
                  sh 'cp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jenkin@172.31.2.54:/opt/tomcat/webapps'
             }
         }
