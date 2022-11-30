@@ -6,8 +6,6 @@ pipeline {
             steps {
                  sh 'pwd'
                  sh 'sudo apt install maven -y'
-                 sh 'sudo git clone https://github.com/anjinama150/hello-world-war.git'
-                 sh 'sudo cd hello-world-war'
                  sh 'sudo cd target'
                  sh 'sudo cp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jenkin@172.31.2.54:/opt/tomcat/webapps'
             }
