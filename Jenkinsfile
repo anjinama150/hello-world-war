@@ -2,15 +2,15 @@ pipeline {
     agent none
     stages {
         stage ('build') {
-            agent {label 'slaveone'}
+            agent {label 'jenkins'}
             steps {
                  sh 'pwd'
                  sh 'mvn package'
-                 sh 'cp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps slavetwo@172.31.2.54:/opt/tomcat/webapps'
+                 sh 'cp -r hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jenkin@172.31.2.54:/opt/tomcat/webapps'
             }
         }
 stage ('deploy') {
-            agent {label 'slavetwo'}
+            agent {label 'jenkin'}
                 steps{
                    sh 'sudo /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
                    sh  'sleep 5'
