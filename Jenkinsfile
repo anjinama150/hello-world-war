@@ -5,13 +5,12 @@ pipeline {
             agent {label 'build'}
             steps {
                  sh 'pwd'
-                 sh 'sudo apt install maven -y'
                  sh 'mvn package'
-                 sh 'sudo scp -r target/hello-world-war-1.0.0.war /opt/apache-tomcat-10.0.27/webapps jen@172.31.2.54:/opt/tomcat/webapps'
+                 sh 'scp -r target/hello-world-war-1.0.0.war root@172.31.8.109:/opt/tomcat/webapps'
             }
         }
 stage ('my deploy') {
-            agent {label 'builder'}
+            agent {label 'deploy'}
                 steps{
                    sh 'sudo /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
                    sh  'sleep 5'
