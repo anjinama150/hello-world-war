@@ -30,6 +30,6 @@
         				<id>central</id>
         					<name>a0sgijz3tcchf-artifactory-primary-0-releases</name>
         					<url>https://anju.jfrog.io/artifactory/libs-release-local</url>
-    				</repository>
+				</repository>
 		</distributionManagement>
 </project>
