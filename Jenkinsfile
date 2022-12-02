@@ -6,15 +6,13 @@ pipeline {
             steps {
                  sh 'pwd'
                  sh 'mvn package'
-                 sh 'sudo scp -r target/hello-world-war-1.0.0.war root@172.31.8.109:/opt/tomcat/webapps'
+                 sh 'scp -r /home/jenkins/workspace/tomcat_deploy/hello-world-war/target/hello-world-war-1.0.0.war root@172.31.8.109:/opt/tomcat/webapps'
             }
         }
-stage ('my deploy') {
+        stage (' my deploy') {
             agent {label 'deploy'}
                 steps{
-                   sh 'sudo /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
-                   sh  'sleep 5'
-                   sh 'sudo /opt/apache-tomcat-10.0.27/bin/startup.sh'
+                   sh 'sudo sh /opt/tomcat/bin/startup.sh'
                 }
             }
         }
